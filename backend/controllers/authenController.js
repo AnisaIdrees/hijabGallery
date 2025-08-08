@@ -62,15 +62,19 @@ export const login = async (req, res) => {
         }
 
         // Step 2: Remove password before sending user data to client
+        const token = signinToken(user)
         const userWithoutPaswd = user.toObject();
         delete userWithoutPaswd.password
 
-        const token = signinToken(user)
+
+        console.log(token ,"tokenn");
+        
         res.status(201).json({
             user: userWithoutPaswd,
             token,
             success: true,
-            message: 'user logged in successfully !'
+            user,
+            message: 'users logged in successfully !'
         })
     }
 

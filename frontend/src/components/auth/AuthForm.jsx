@@ -41,6 +41,7 @@ function AuthForm() {
       if (data.success) {
         console.log('sign up successfully ', data.message);
         console.log('sign up data ', data);
+          console.log("Token:", data.token); 
         setToken(data.token)
         setUser(data.user)
         setFormData({
@@ -88,6 +89,7 @@ function AuthForm() {
 
       if (data.success) {
         console.log('login successfully ', data.message);
+        console.log('login successfully ', data);
         setToken(data.token)
         setUser(data.user)
         setFormData({

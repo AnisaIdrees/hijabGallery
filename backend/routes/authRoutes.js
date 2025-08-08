@@ -1,6 +1,6 @@
 import {Router} from 'express'
 import { forgotPassword, login, profile, resetPswd, singUp } from '../controllers/authenController.js'
-import { middlewareToProtect } from '../middlewares/authMiddileware.js'
+import { middlewareToProtect } from '../middlewares/authMiddleware.js'
 // import { middlewareToProtect } from '../middlewares/authMiddileware.js'
 
 const router= Router()

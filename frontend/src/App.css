@@ -1,0 +1,44 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.form-box{
+  padding: 30px;
+  padding-top: 20px;
+  /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.205) 0px 2px 16px 0px; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+.input-box{
+  margin-bottom: 8px;
+
+}
+input{
+  padding: 8px;
+  background-color: #d1c9c95b;
+  outline: none;
+  border: none;
+}
+.label{
+  margin-bottom: 5px;
+}
+.forgot-paswd{
+  padding: 10px 0px;
+}
+.heading{
+  margin-top: 20px 0px;
+  padding: 20px;
+  padding-bottom: -10px;
+  text-align: left;
+}
+.submit{
+  padding: 10px;
+  cursor: pointer;
+}
+.tab{
+  padding: 15px 0;
+}
+.topBar-offer-text{
+  padding: 5px 6px;
+  padding-top: 7px;
+}

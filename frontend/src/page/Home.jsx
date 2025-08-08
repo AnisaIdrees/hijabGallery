@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { getUser, removeToken, removeUser, getToken } from '../utils/auth.js';
 import axios from "axios";
-import ReviewForm from '../components/ReviewForm.jsx';
 
 function Home() {
   const [logoutOpen, setLogoutOpen] = useState(false)
@@ -73,13 +72,13 @@ function Home() {
 
             {/* Add Review Icon */}
             <NavLink
-              to='/addReview'
+              to='/reviews'
               onClick={() => alert('Add Review clicked!')} // 
               className="flex items-center gap-1 text-orange-500 hover:text-orange-400 transition text-lg"
               title="Add Review"
             >
-              <IoMdAddCircleOutline size={28} />
-              <span className="hidden sm:inline font-semibold">Add Review</span>
+              {/* <IoMdAddCircleOutline size={28} /> */}
+              <span className="hidden sm:inline font-semibold"> Review</span>
             </NavLink>
 
             {/* Logout Button */}

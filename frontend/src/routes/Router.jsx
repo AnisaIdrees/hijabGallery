@@ -6,6 +6,7 @@ import ForgotPswd from '../components/ForgotPswd'
 import ResetPaswd from '../components/ResetPaswd'
 import Home from '../page/Home'
 import ReviewForm from '../components/ReviewForm'
+import ReviewsPage from '../page/ReviewsPage'
 
 
 
@@ -32,8 +33,11 @@ const router = createBrowserRouter([
         {
        path:'/addReview/:id' ,
        element:<ReviewForm/>
-    }
-
+    },
+        {
+       path:'/reviews' ,
+       element:<ReviewsPage/>
+    },
   
 ])
 

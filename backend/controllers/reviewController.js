@@ -3,14 +3,14 @@ import Review from '../model/reviewSchema.js'
 // ****************** Create *******************//
 export const createReview = async (req, res) => {
     try {
-        const {rating, reviewText } = req.body;
+        const { rating, reviewText } = req.body;
         const userId = req.user._id;
 
-        if ( !rating || !reviewText) {
+        if (!rating || !reviewText) {
             return res.status(400).json({ message: 'All fields required' });
         }
 
-        const newReview = new Review({userId, rating, reviewText });
+        const newReview = new Review({ userId, rating, reviewText });
         await newReview.save();
 
         res.status(201).json(newReview);
@@ -22,9 +22,12 @@ export const createReview = async (req, res) => {
 // ****************** read *******************//
 export const getAllReview = async (req, res) => {
     try {
-        const reviews = await Review.find();
+        const reviews = await Review.find({}).sort({createdAt:-1}).populate('userId', 'name');
 
-        res.status(200).json({ success: true, reviews });
+        res.status(200).json({
+            success: true,
+            reviews
+        });
     } catch (error) {
         res.status(500).json({ success: false, message: 'Server error', error: error.message });
     }

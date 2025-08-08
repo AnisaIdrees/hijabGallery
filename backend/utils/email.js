@@ -13,7 +13,7 @@ const _sendEmail = async (body) => {
         });
         
         await transporter.sendMail({
-            from: `E-commerce ${process.env.EMAIL_NODEMAILER}`,
+            from: `Hijabis${process.env.EMAIL_NODEMAILER}`,
             ...body
         })
         console.log('email sent', body.to);

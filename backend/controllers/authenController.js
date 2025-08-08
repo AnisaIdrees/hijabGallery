@@ -104,9 +104,17 @@ export const forgotPassword = async (req, res) => {
     // reset token
     const resetToken = jwt.sign({ id: user._id },
         process.env.JWT_SECRET,
-        { expiresIn: '10m' }
+        { expiresIn: '10d' }
 
     )
+
+
+
+
+
+
+
+
 
     //resetUrl frontend
     const resetUrl = `${process.env.WEBSITE_URL}reset-password/${resetToken}`

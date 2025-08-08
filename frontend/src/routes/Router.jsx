@@ -5,6 +5,7 @@ import App from '../App'
 import ForgotPswd from '../components/ForgotPswd'
 import ResetPaswd from '../components/ResetPaswd'
 import Home from '../page/Home'
+import ReviewForm from '../components/ReviewForm'
 
 
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
     {
        path:'/home' ,
        element:<Home/>
+    },
+        {
+       path:'/addReview' ,
+       element:<ReviewForm/>
     }
 
   

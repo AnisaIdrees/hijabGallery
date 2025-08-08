@@ -47,7 +47,7 @@ const handleSubmit = async (e) => {
 };
 
     return (
-        <div className="div bg-gray-100">
+        <div className="div bg-gray-100 w-full h-screen py-15">
             <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-2xl">
                 <h2 className="text-2xl font-semibold mb-6 text-gray-800">Add Your Review</h2>
                 <form onSubmit={handleSubmit}>

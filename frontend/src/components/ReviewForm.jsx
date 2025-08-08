@@ -5,10 +5,13 @@ import { getToken } from "../utils/auth";
 const ReviewForm = () => {
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(null);
-    const [review, setReview] = useState("");
+    const [reviewText, setReviewText] = useState("");
 
 
     
+
+
+
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -17,32 +20,33 @@ const handleSubmit = async (e) => {
     return;
   }
 
-  if (review.trim() === "") {
+  if (reviewText.trim() === "") {
     alert("Please write a review");
     return;
   }
 
-  const data = { rating, review };
+  const data = { rating, reviewText };
 
   try {
-  const token = getToken()
-      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/review/createReview`, {review, rating},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      console.log('success question', data);
+    const token = getToken();
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/review/createReview`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    console.log('success question', response.data);
+
     if (response.status === 201 || response.status === 200) {
       alert('Review submitted successfully!');
       setRating(0);
-      setReview('');
+      setReviewText("");
     } else {
       alert('Failed to submit review');
     }
   } catch (error) {
     alert('Error: ' + (error.response?.data?.message || error.message));
+    console.log('Error: ' + (error.response?.data?.message || error.message));
   }
 };
 
@@ -74,8 +78,8 @@ const handleSubmit = async (e) => {
                         rows="4"
                         className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 mb-6"
                         placeholder="Write your review here..."
-                        value={review}
-                        onChange={(e) => setReview(e.target.value)}
+                        value={reviewText}
+                        onChange={(e) => setReviewText(e.target.value)}
                      
                     />
 

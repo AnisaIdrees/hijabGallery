@@ -1,10 +1,7 @@
 import mongoose from 'mongoose';
 
 const reviewSchema = new mongoose.Schema({
-  hijabStyleId: {       
-    type: String,
-    required: true,
-  },
+
   userId: {           
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
@@ -16,7 +13,7 @@ const reviewSchema = new mongoose.Schema({
     min: 1,
     max: 5,
   },
-  comment: {          
+  reviewText: {          
     type: String,
     required: true,
   },

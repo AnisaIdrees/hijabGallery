@@ -3,14 +3,14 @@ import Review from '../model/reviewSchema.js'
 // ****************** Create *******************//
 export const createReview = async (req, res) => {
     try {
-        const { hijabStyleId, rating, reviewText } = req.body;
+        const {rating, reviewText } = req.body;
         const userId = req.user._id;
 
-        if (!hijabStyleId || !rating || !reviewText) {
+        if ( !rating || !reviewText) {
             return res.status(400).json({ message: 'All fields required' });
         }
 
-        const newReview = new Review({ hijabStyleId, userId, rating, reviewText });
+        const newReview = new Review({userId, rating, reviewText });
         await newReview.save();
 
         res.status(201).json(newReview);

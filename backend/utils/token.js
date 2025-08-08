@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 
 export const signinToken = (user) => {
 
-    jwt.sign(
+    return jwt.sign(
         {
             id: user._id,
             email: user.email,

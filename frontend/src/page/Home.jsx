@@ -7,9 +7,11 @@ import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { getUser, removeToken, removeUser, getToken } from '../utils/auth.js';
 import axios from "axios";
+import { FiMenu, FiX } from "react-icons/fi";
 
 function Home() {
   const [logoutOpen, setLogoutOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
   const [styles, setStyles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -41,9 +43,9 @@ function Home() {
   }, []);
 
   const handleClick = (id) => {
-     const checkID= navigate(`/addReview/${id}`);
-     console.log(checkID,"idcard");
-     
+    const checkID = navigate(`/addReview/${id}`);
+    console.log(checkID, "idcard");
+
   };
 
   if (loading) return <div className="text-center mt-10 text-lg">Loading...</div>;
@@ -60,43 +62,62 @@ function Home() {
       <div className="min-h-screen bg-gray-100">
 
         {/* Header */}
-        <header className="flex flex-col sm:flex-row justify-between items-center max-w-7xl mx-auto px-6 py-4 bg-black shadow-md sticky top-0 z-10">
+        <header className="flex flex-wrap sm:flex-nowrap justify-between items-center max-w-full mx-auto px-6 py-5 bg-black shadow-md sticky top-0 z-10">
 
           {/* Logo */}
-          <div className="text-orange-500 text-3xl font-extrabold cursor-pointer select-none mb-3 sm:mb-0">
+          <div className="text-orange-500 text-3xl font-extrabold cursor-pointer select-none">
             Hijab<span className="text-white">Styles</span>
           </div>
 
-          {/* Right side buttons */}
-          <div className="flex items-center gap-4 sm:gap-6">
+          {/* Toggle Button - Mobile Only */}
+          <div className="sm:hidden text-orange-500 text-2xl cursor-pointer" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <FiX /> : <FiMenu />}
+          </div>
 
-            {/* Add Review Icon */}
+          {/* Desktop Menu */}
+          <div className="hidden sm:flex items-center gap-6">
             <NavLink
-              to='/reviews'
-              onClick={() => alert('Add Review clicked!')} // 
+              to="/reviews"
               className="flex items-center gap-1 text-orange-500 hover:text-orange-400 transition text-lg"
-              title="Add Review"
             >
-              {/* <IoMdAddCircleOutline size={28} /> */}
-              <span className="hidden sm:inline font-semibold"> Review</span>
+              <span className="font-semibold">Review</span>
             </NavLink>
 
-            {/* Logout Button */}
             <div
-              onClick={() => { setLogoutOpen(true); handleLogout }}
+              onClick={() => { setLogoutOpen(true); }}
               className="flex items-center bg-orange-500 gap-3 hover:bg-red-500 px-3 py-2 rounded transition text-sm cursor-pointer"
             >
-
               <span className="text-xl"><IoIosLogOut /></span>
-              {<span>Logout</span>}
+              <span>Logout</span>
             </div>
           </div>
+
+          {/* Mobile Dropdown Menu */}
+          {menuOpen && (
+            <div className="w-full sm:hidden mt-4 bg-black rounded-lg p-4 space-y-3">
+              <NavLink
+                to="/reviews"
+                className="block text-orange-500 hover:text-orange-400 transition text-lg"
+                onClick={() => setMenuOpen(false)}
+              >
+                Review
+              </NavLink>
+
+              <div
+                onClick={() => { setLogoutOpen(true); setMenuOpen(false); }}
+                className="flex items-center bg-orange-500 gap-3 hover:bg-red-500 px-3 py-2 rounded transition text-sm cursor-pointer"
+              >
+                <span className="text-xl"><IoIosLogOut /></span>
+                <span>Logout</span>
+              </div>
+            </div>
+          )}
         </header>
 
         {/* Content */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 py-13">
 
-          <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center text-orange-600">
+          <h1 className="pb-4 text-3xl sm:text-4xl font-bold mb-8 text-center bg-gradient-to-r from-orange-500 to-rose-600 text-transparent bg-clip-text">
             Hijab Styles
           </h1>
 
@@ -106,7 +127,7 @@ function Home() {
               <div
                 onClick={() => handleClick(style.id)}
                 key={style.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300"
+                className="bg-white px-4 py-4  shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300"
               >
                 <img
                   src={style.image}

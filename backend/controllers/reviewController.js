@@ -33,18 +33,11 @@ export const getAllReview = async (req, res) => {
     }
 }
 
-
-
-
-
-
-
-
 // ****************** edit *******************//
 export const editReview = async (req, res) => {
     try {
         const reviewId = req.params.id;
-        const userId = req.user._id;  // middlewareToProtect se aya hua user id
+        const userId = req.user._id;  
         const updates = req.body;
 
         // Find review by id
@@ -58,7 +51,7 @@ export const editReview = async (req, res) => {
             return res.status(403).json({ success: false, message: 'Unauthorized to edit this review' });
         }
 
-        // Update the review fields (e.g. text, rating)
+        
         Object.assign(review, updates);
         await review.save();
 
@@ -67,17 +60,6 @@ export const editReview = async (req, res) => {
         res.status(500).json({ success: false, message: 'Server error', error: error.message });
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // ****************** delete *******************//
 export const deleteReview = async (req, res) => {

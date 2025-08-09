@@ -7,6 +7,7 @@ import ResetPaswd from '../components/ResetPaswd'
 import Home from '../page/Home'
 import ReviewForm from '../components/ReviewForm'
 import ReviewsPage from '../page/ReviewsPage'
+import ProtectedRoute from '../components/ProtectedRoute'
 
 
 
@@ -21,23 +22,31 @@ const router = createBrowserRouter([
 
             // public routes
             { path: '/', element: <AuthForm /> },
-            { path: 'forgot-password', element: <ForgotPswd/> },
-            { path: 'reset-password/:token', element: <ResetPaswd/> }
+            { path: 'forgot-password', element: <ForgotPswd /> },
+            { path: 'reset-password/:token', element: <ResetPaswd /> }
         ]
     },
     {
-       path:'/home' ,
-       element:<Home/>
+        path: '/home',
+        element: <Home />
     },
-        {
-       path:'/addReview/:id' ,
-       element:<ReviewForm/>
+    {
+        path: '/addReview/:id',
+        element: (
+            <ProtectedRoute>
+                <ReviewForm />
+            </ProtectedRoute>
+        ),
     },
-        {
-       path:'/reviews' ,
-       element:<ReviewsPage/>
+    {
+        path: '/reviews',
+        element: (
+            <ProtectedRoute>
+                <ReviewsPage />
+            </ProtectedRoute>
+        )
     },
-  
+
 ])
 
 

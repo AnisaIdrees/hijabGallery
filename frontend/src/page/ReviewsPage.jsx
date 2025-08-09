@@ -4,6 +4,7 @@ import axios from "axios";
 import { getUser } from "../utils/auth";
 import EditReviewModal from '../components/modal/EditReviewModal';
 import ReviewText from '../components/ReviewText';
+import { toast, ToastContainer } from 'react-toastify';
 
 const ReviewsPage = () => {
   const [reviews, setReviews] = useState([]);
@@ -55,7 +56,7 @@ const ReviewsPage = () => {
       alert("Failed to delete review");
       console.error(error);
     }
-    alert("Delete review: " + id);
+    toast.success("Deleted successfully");
   };
 
 
@@ -230,6 +231,8 @@ const ReviewsPage = () => {
           onSave={handleUpdateReview}
           review={selectedReview}
         />
+        <ToastContainer position="top-center" theme="light" />
+
       </div>
 
     </>

@@ -21,7 +21,6 @@ const router = createBrowserRouter([
 
             // public routes
             { path: '/', element: <AuthForm /> },
-            // { path: '/', element: <h1>Hello</h1> },
             { path: 'forgot-password', element: <ForgotPswd/> },
             { path: 'reset-password/:token', element: <ResetPaswd/> }
         ]

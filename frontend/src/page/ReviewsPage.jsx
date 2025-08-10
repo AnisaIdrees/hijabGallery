@@ -5,6 +5,7 @@ import { getUser } from "../utils/auth";
 import EditReviewModal from '../components/modal/EditReviewModal';
 import ReviewText from '../components/ReviewText';
 import { toast, ToastContainer } from 'react-toastify';
+import { FaArrowLeft } from "react-icons/fa6";
 
 const ReviewsPage = () => {
   const [reviews, setReviews] = useState([]);
@@ -87,82 +88,28 @@ const ReviewsPage = () => {
   if (reviews.length === 0) return <div className="text-center p-10">No reviews found.</div>;
 
   return (
-    // <div className="py-10 bg-gray-100 min-h-screen">
-    //   <h1 className="text-3xl font-bold text-center py-5 mb-6 text-gray-800">Customer Reviews</h1>
-
-    //   <div className="w-2xl mx-auto bg-white p-6 rounded-lg shadow-md space-y-2">
-
-    //     {reviews.map((review) => {
-    //       const userName = review.userId?.name || "Anonymous";
-    //       const initial = userName.charAt(0).toUpperCase();
-
-    //       return (
-    //         <div key={review._id} className="border-b  border-gray-100 pb-9 pt-8 mb-2">
-    //           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-    //             <div className="flex items-center space-x-3">
-    //               <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-semibold text-lg">
-    //                 {initial}
-    //               </div>
-    //               <h3 className="text-lg font-semibold text-gray-900">{userName}</h3>
-    //             </div>
-
-    //             <Stars rating={review.rating} />
-
-    //             <time className="text-sm text-gray-500">
-    //               {new Date(review.createdAt).toLocaleDateString()}
-    //             </time>
-    //           </div>
-
-    //           <p className="text-gray-700 whitespace-pre-line">{review.reviewText}</p>
-
-    //           {/* Show Edit/Delete only for reviews of logged-in user */}
-    //           {review.userId?._id === currentUserId && (
-    //             <div className=" flex  justify-end space-x-1 mt-2 ">
-    //               <button
-    //                 type='button'
-    //                 className="px-1 py-1 text-green-500 rounded"
-    //                 onClick={() => handleEdit(review._id)}
-    //               >
-    //                 <FiEdit className="mr-1" />
-    //               </button>
-    //               <button
-    //                 className="  text-red-500  rounded"
-    //                 onClick={() => handleDelete(review._id)}
-    //               >
-    //                 <FiTrash2 className="mr-1" />
-    //               </button>
-    //             </div>
-    //           )}
-    //         </div>
-    //       );
-    //     })}
-    //   </div>
-    //   {/* Edit Modal */}
-    //   <EditReviewModal
-    //     isOpen={isModalOpen}
-    //     onClose={() => setIsModalOpen(false)}
-    //     onSave={handleUpdateReview}
-    //     review={selectedReview}
-    //   />
-    // </div>
-
     <>
       <div className="py-10 bg-gray-100 min-h-screen">
         {/* Header with Back Link */}
-        <div className="relative max-w-7xl mx-auto px-4 mb-6">
+        <div className="max-w-7xl mx-auto px-4 mb-6">
           {/* Back Button */}
           <a
             href="/home"
-            className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center text-orange-600 hover:text-orange-800 font-semibold"
+            className="flex items-center text-orange-600 hover:text-orange-800 font-semibold text-sm sm:text-base"
           >
-            ← Back to Home
+            <FaArrowLeft size={25} className='mb-9'/>
           </a>
+          {/* Top bar for Back Button & Heading */}
+          <div className="flex flex-col sm:flex-row  justify-center items-center  relative gap-3">
 
-          {/* Heading */}
-          <h1 className="text-3xl font-bold text-gray-800 text-center">
-            Customer Reviews
-          </h1>
+
+            {/* Heading */}
+            <h1 className="text-3xl sm:text-3xl pb-4 font-bold text-gray-800 text-center sm:text-left">
+              Customer Reviews
+            </h1>
+          </div>
         </div>
+
 
 
         {/* Reviews Container */}

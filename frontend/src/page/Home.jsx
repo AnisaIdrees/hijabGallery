@@ -80,7 +80,7 @@ function Home() {
               to="/reviews"
               className="flex items-center gap-1 text-orange-500 hover:text-orange-400 transition text-lg"
             >
-              <span className="font-semibold">Review</span>
+              <span className="font-semibold">Reviews</span>
             </NavLink>
 
             <div
@@ -100,7 +100,7 @@ function Home() {
                 className="block text-orange-500 hover:text-orange-400 transition text-lg"
                 onClick={() => setMenuOpen(false)}
               >
-                Review
+                Reviews
               </NavLink>
 
               <div
